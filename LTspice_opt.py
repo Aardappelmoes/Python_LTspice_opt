@@ -52,6 +52,7 @@ import logging
 
 from PyLTSpice import RawRead # user must install into env from https://pypi.org/project/PyLTSpice/
 from PyLTSpice import SimRunner
+from PyLTSpice import set_log_level
 from scipy.optimize import least_squares
 
 import pyswarms as ps
@@ -667,6 +668,12 @@ def main():
     # global passcellDict
     global spiceSimCount
     global restartCount
+    
+    # set global log level
+    logging.basicConfig(level="INFO")
+    # Set PyLTSpice log level
+    set_log_level(logging.WARNING)
+    
 
     # ********* parse the command-line input args, read in the setup and target files *****
     #  *** possible input scenarios
